@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignalForge AI</title>
+  <title>SignalForge</title>
   <meta name="description" content="Offline anomaly detection and incident intelligence lab for time-series telemetry.">
   <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#">
-      <span class="brand-mark"></span>
+      <span class="brand-mark">SF</span>
       <span>
-        <strong>SignalForge AI</strong>
-        <small>Telemetry intelligence lab</small>
+        <strong>SignalForge</strong>
+        <small>Local telemetry review</small>
       </span>
     </a>
     <nav class="nav">
       <button class="ghost-btn" id="save-btn" type="button">Save</button>
       <button class="ghost-btn" id="load-btn" type="button">Load</button>
-      <button class="primary-btn" id="export-json-btn" type="button">Export Report</button>
+      <button class="primary-btn" id="export-json-btn" type="button">Export report</button>
     </nav>
   </header>
 
   <main class="shell">
-    <section class="intro">
-      <div>
-        <p class="eyebrow">Offline anomaly detection</p>
-        <h1>Investigate telemetry like an incident commander.</h1>
-        <p class="intro-copy">Generate or import time-series signals, detect abnormal behavior, group incidents, and export a clean technical report from one local workspace.</p>
+    <section class="summary-strip">
+      <div class="summary-copy">
+        <p class="eyebrow">Signal review</p>
+        <h1>Find the weird parts of a metric before they become a mess.</h1>
+        <p>Generate or import telemetry, build a baseline, flag anomalies, group incidents, and export the review. Everything runs in the browser.</p>
       </div>
-      <div class="intro-panel">
+      <div class="health-card">
         <span>Health score</span>
         <strong id="hero-score">--</strong>
         <small id="hero-summary">Run an analysis to profile the current signal.</small>
@@ -40,7 +40,7 @@
     <section class="workspace">
       <aside class="control-panel">
         <div class="panel-head">
-          <h2>Signal Setup</h2>
+          <h2>Signal setup</h2>
           <span id="point-count-label">0 points</span>
         </div>
 
@@ -86,12 +86,12 @@
 
         <div class="import-box">
           <div class="import-head">
-            <span>CSV Import</span>
+            <span>CSV import</span>
             <label class="file-label" for="csv-file">Upload</label>
             <input id="csv-file" type="file" accept=".csv,text/csv">
           </div>
           <textarea id="csv-input" rows="7" spellcheck="false" placeholder="timestamp,value&#10;2026-05-20 09:00,120&#10;2026-05-20 09:05,132"></textarea>
-          <button class="ghost-btn full" id="import-btn" type="button">Use CSV Signal</button>
+          <button class="ghost-btn full" id="import-btn" type="button">Use CSV signal</button>
         </div>
       </aside>
 
@@ -126,7 +126,7 @@
               <p id="chart-subtitle">Synthetic signal with deployment spikes, traffic seasonality, and recovery patterns.</p>
             </div>
             <div class="chart-actions">
-              <button class="ghost-btn" id="stream-btn" type="button">Start Stream</button>
+              <button class="ghost-btn" id="stream-btn" type="button">Start stream</button>
               <button class="ghost-btn" id="export-csv-btn" type="button">Export CSV</button>
             </div>
           </div>
@@ -139,7 +139,7 @@
         <div class="lower-grid">
           <section class="incident-panel">
             <div class="panel-head">
-              <h2>Incident Queue</h2>
+              <h2>Incident queue</h2>
               <span id="incident-count">0 incidents</span>
             </div>
             <div class="incident-list" id="incident-list"></div>
@@ -147,7 +147,7 @@
 
           <section class="insight-panel">
             <div class="panel-head">
-              <h2>Investigation Brief</h2>
+              <h2>Investigation brief</h2>
               <span id="brief-mode">Model summary</span>
             </div>
             <div class="brief-body" id="brief-body">

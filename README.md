@@ -1,12 +1,12 @@
-# SignalForge AI
+# SignalForge
 
-SignalForge AI is an offline anomaly detection lab for technical telemetry. It generates realistic time-series data, analyzes it with robust statistical models, groups anomalies into incidents, explains likely root causes, and exports investigation reports without requiring a backend or cloud service.
+SignalForge is an offline anomaly detection lab for technical telemetry. It generates realistic time-series data, analyzes it with robust statistical models, groups anomalies into incidents, explains likely root causes, and exports investigation reports without requiring a backend or cloud service.
 
-![SignalForge AI dashboard](assets/signalforge-dashboard.png)
+![SignalForge dashboard](assets/signalforge-dashboard.png)
 
 ## Why It Matters
 
-Modern systems produce constant streams of metrics: latency, revenue, GPU utilization, power demand, error rates, throughput, and many more. SignalForge AI gives teams a focused interface to understand whether a signal is healthy, what changed, and which moments deserve investigation.
+Modern systems produce constant streams of metrics: latency, revenue, GPU utilization, power demand, error rates, throughput, and many more. SignalForge gives teams a focused interface to understand whether a signal is healthy, what changed, and which moments deserve investigation.
 
 ## Features
 
@@ -58,11 +58,11 @@ timestamp,value
 2026-05-20 09:10,175
 ```
 
-If timestamps are omitted, SignalForge AI creates a sequential time axis.
+If timestamps are omitted, SignalForge creates a sequential time axis.
 
 ## Analysis Model
 
-SignalForge AI uses a local statistical pipeline:
+SignalForge uses a local statistical pipeline:
 
 1. Normalize and clean the signal.
 2. Estimate trend with exponential smoothing.

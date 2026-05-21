@@ -524,8 +524,8 @@ function renderChart() {
 
   drawGrid(rect, pad, min, max);
   drawConfidence(visibleBaseline, analysis.confidence, x, y);
-  drawLine(visibleBaseline, x, y, "rgba(112, 167, 255, 0.9)", 2);
-  drawLine(visibleValues, x, y, "rgba(38, 215, 184, 0.95)", 3);
+  drawLine(visibleBaseline, x, y, "rgba(49, 95, 130, 0.9)", 2);
+  drawLine(visibleValues, x, y, "rgba(47, 143, 131, 0.96)", 3);
 
   if (forecast.length) {
     drawForecast(visibleSeries.length - 1, visibleSeries[visibleSeries.length - 1].value, forecast, x, y);
@@ -533,8 +533,8 @@ function renderChart() {
 
   analysis.anomalies.filter(item => item.index < streamLimit).forEach(item => {
     ctx.beginPath();
-    ctx.fillStyle = item.residual >= 0 ? "#ff6f8f" : "#f1b64b";
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.86)";
+    ctx.fillStyle = item.residual >= 0 ? "#b95a5a" : "#b7832d";
+    ctx.strokeStyle = "rgba(255, 254, 250, 0.9)";
     ctx.lineWidth = 2;
     ctx.arc(x(item.index), y(item.value), 5.6, 0, Math.PI * 2);
     ctx.fill();
@@ -555,8 +555,8 @@ function renderChart() {
 
 function drawGrid(rect, pad, min, max) {
   ctx.save();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.075)";
-  ctx.fillStyle = "rgba(155, 167, 183, 0.8)";
+  ctx.strokeStyle = "rgba(32, 37, 42, 0.09)";
+  ctx.fillStyle = "rgba(104, 112, 111, 0.9)";
   ctx.lineWidth = 1;
   ctx.font = "12px Inter, sans-serif";
 
@@ -589,7 +589,7 @@ function drawConfidence(baseline, confidence, x, y) {
     ctx.lineTo(x(index), y(value - confidence));
   });
   ctx.closePath();
-  ctx.fillStyle = "rgba(112, 167, 255, 0.11)";
+  ctx.fillStyle = "rgba(49, 95, 130, 0.11)";
   ctx.fill();
   ctx.restore();
 }
@@ -620,7 +620,7 @@ function drawForecast(startIndex, startValue, forecast, x, y) {
   forecast.forEach((point, step) => {
     ctx.lineTo(x(startIndex + step + 1), y(point.value));
   });
-  ctx.strokeStyle = "rgba(241, 182, 75, 0.94)";
+  ctx.strokeStyle = "rgba(183, 131, 45, 0.94)";
   ctx.lineWidth = 2;
   ctx.stroke();
   ctx.restore();
@@ -628,10 +628,10 @@ function drawForecast(startIndex, startValue, forecast, x, y) {
 
 function drawLegend(rect) {
   const items = [
-    ["Signal", "#26d7b8"],
-    ["Baseline", "#70a7ff"],
-    ["Forecast", "#f1b64b"],
-    ["Anomaly", "#ff6f8f"]
+    ["Signal", "#2f8f83"],
+    ["Baseline", "#315f82"],
+    ["Forecast", "#b7832d"],
+    ["Anomaly", "#b95a5a"]
   ];
   ctx.save();
   ctx.font = "12px Inter, sans-serif";
@@ -640,7 +640,7 @@ function drawLegend(rect) {
     const y = 24;
     ctx.fillStyle = item[1];
     ctx.fillRect(x, y - 9, 10, 10);
-    ctx.fillStyle = "rgba(244, 247, 251, 0.82)";
+    ctx.fillStyle = "rgba(32, 37, 42, 0.82)";
     ctx.fillText(item[0], x + 16, y);
   });
   ctx.restore();
