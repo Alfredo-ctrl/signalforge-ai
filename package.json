@@ -1,0 +1,19 @@
+{
+  "name": "signalforge-ai",
+  "version": "1.0.0",
+  "description": "Offline anomaly detection and incident intelligence lab for time-series telemetry.",
+  "private": false,
+  "scripts": {
+    "start": "python -m http.server 5173",
+    "check": "node --check src/app.js"
+  },
+  "keywords": [
+    "anomaly-detection",
+    "time-series",
+    "observability",
+    "dashboard",
+    "machine-learning"
+  ],
+  "author": "Alfredo Oliva",
+  "license": "MIT"
+}

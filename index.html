@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignalForge AI</title>
+  <meta name="description" content="Offline anomaly detection and incident intelligence lab for time-series telemetry.">
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-mark"></span>
+      <span>
+        <strong>SignalForge AI</strong>
+        <small>Telemetry intelligence lab</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <button class="ghost-btn" id="save-btn" type="button">Save</button>
+      <button class="ghost-btn" id="load-btn" type="button">Load</button>
+      <button class="primary-btn" id="export-json-btn" type="button">Export Report</button>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">Offline anomaly detection</p>
+        <h1>Investigate telemetry like an incident commander.</h1>
+        <p class="intro-copy">Generate or import time-series signals, detect abnormal behavior, group incidents, and export a clean technical report from one local workspace.</p>
+      </div>
+      <div class="intro-panel">
+        <span>Health score</span>
+        <strong id="hero-score">--</strong>
+        <small id="hero-summary">Run an analysis to profile the current signal.</small>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="control-panel">
+        <div class="panel-head">
+          <h2>Signal Setup</h2>
+          <span id="point-count-label">0 points</span>
+        </div>
+
+        <label class="field">
+          <span>Scenario</span>
+          <select id="scenario-select">
+            <option value="api">API latency platform</option>
+            <option value="checkout">Checkout revenue stream</option>
+            <option value="gpu">GPU cluster thermals</option>
+            <option value="grid">Smart grid demand</option>
+            <option value="custom">Custom CSV signal</option>
+          </select>
+        </label>
+
+        <div class="slider-row">
+          <label for="sensitivity-input">Sensitivity</label>
+          <output id="sensitivity-output">72</output>
+          <input id="sensitivity-input" type="range" min="1" max="100" value="72">
+        </div>
+
+        <div class="slider-row">
+          <label for="seasonality-input">Seasonality</label>
+          <output id="seasonality-output">24</output>
+          <input id="seasonality-input" type="range" min="4" max="96" step="4" value="24">
+        </div>
+
+        <div class="slider-row">
+          <label for="smooth-input">Smoothing</label>
+          <output id="smooth-output">34</output>
+          <input id="smooth-input" type="range" min="1" max="90" value="34">
+        </div>
+
+        <div class="slider-row">
+          <label for="noise-input">Volatility</label>
+          <output id="noise-output">42</output>
+          <input id="noise-input" type="range" min="1" max="100" value="42">
+        </div>
+
+        <div class="button-grid">
+          <button class="primary-btn" id="generate-btn" type="button">Generate</button>
+          <button class="ghost-btn" id="analyze-btn" type="button">Analyze</button>
+        </div>
+
+        <div class="import-box">
+          <div class="import-head">
+            <span>CSV Import</span>
+            <label class="file-label" for="csv-file">Upload</label>
+            <input id="csv-file" type="file" accept=".csv,text/csv">
+          </div>
+          <textarea id="csv-input" rows="7" spellcheck="false" placeholder="timestamp,value&#10;2026-05-20 09:00,120&#10;2026-05-20 09:05,132"></textarea>
+          <button class="ghost-btn full" id="import-btn" type="button">Use CSV Signal</button>
+        </div>
+      </aside>
+
+      <section class="analysis-panel">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span>Anomalies</span>
+            <strong id="anomaly-count">--</strong>
+            <small id="anomaly-rate">Awaiting analysis</small>
+          </article>
+          <article class="metric-card">
+            <span>Peak severity</span>
+            <strong id="peak-severity">--</strong>
+            <small id="peak-label">No incident selected</small>
+          </article>
+          <article class="metric-card">
+            <span>Forecast drift</span>
+            <strong id="forecast-drift">--</strong>
+            <small id="forecast-label">Next horizon estimate</small>
+          </article>
+          <article class="metric-card">
+            <span>Confidence band</span>
+            <strong id="band-width">--</strong>
+            <small id="band-label">Adaptive residual spread</small>
+          </article>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-head">
+            <div>
+              <h2 id="chart-title">API latency platform</h2>
+              <p id="chart-subtitle">Synthetic signal with deployment spikes, traffic seasonality, and recovery patterns.</p>
+            </div>
+            <div class="chart-actions">
+              <button class="ghost-btn" id="stream-btn" type="button">Start Stream</button>
+              <button class="ghost-btn" id="export-csv-btn" type="button">Export CSV</button>
+            </div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="signal-canvas" width="1200" height="560"></canvas>
+            <div class="tooltip" id="chart-tooltip" hidden></div>
+          </div>
+        </div>
+
+        <div class="lower-grid">
+          <section class="incident-panel">
+            <div class="panel-head">
+              <h2>Incident Queue</h2>
+              <span id="incident-count">0 incidents</span>
+            </div>
+            <div class="incident-list" id="incident-list"></div>
+          </section>
+
+          <section class="insight-panel">
+            <div class="panel-head">
+              <h2>Investigation Brief</h2>
+              <span id="brief-mode">Model summary</span>
+            </div>
+            <div class="brief-body" id="brief-body">
+              <p>Generate or import a signal, then run analysis to create an incident brief.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="src/app.js"></script>
+</body>
+</html>
