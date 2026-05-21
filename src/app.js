@@ -737,7 +737,7 @@ function loadWorkspace() {
 function exportJsonReport() {
   if (!state.analysis) analyzeSeries();
   const payload = {
-    project: "SignalForge AI",
+    project: "SignalForge",
     generatedAt: new Date().toISOString(),
     settings: settings(),
     health: round(state.analysis.health, 2),

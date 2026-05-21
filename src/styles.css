@@ -78,16 +78,39 @@ button {
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  place-items: center;
-  border-radius: var(--radius);
+.signal-mark {
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  width: 50px;
+  height: 34px;
+  padding: 0 2px;
+}
+
+.signal-mark i {
+  display: block;
+  width: 7px;
+  border-radius: 999px 999px 0 0;
   background: var(--ink);
-  color: var(--surface);
-  font-size: 12px;
-  font-weight: 800;
+}
+
+.signal-mark i:nth-child(1) {
+  height: 14px;
+}
+
+.signal-mark i:nth-child(2) {
+  height: 24px;
+  background: var(--blue);
+}
+
+.signal-mark i:nth-child(3) {
+  height: 31px;
+  background: var(--teal);
+}
+
+.signal-mark i:nth-child(4) {
+  height: 19px;
+  background: var(--amber);
 }
 
 .brand strong,
