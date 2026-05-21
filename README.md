@@ -2,6 +2,8 @@
 
 SignalForge AI is an offline anomaly detection lab for technical telemetry. It generates realistic time-series data, analyzes it with robust statistical models, groups anomalies into incidents, explains likely root causes, and exports investigation reports without requiring a backend or cloud service.
 
+![SignalForge AI dashboard](assets/signalforge-dashboard.png)
+
 ## Why It Matters
 
 Modern systems produce constant streams of metrics: latency, revenue, GPU utilization, power demand, error rates, throughput, and many more. SignalForge AI gives teams a focused interface to understand whether a signal is healthy, what changed, and which moments deserve investigation.
