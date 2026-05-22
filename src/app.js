@@ -118,6 +118,70 @@ const state = {
 };
 
 const ctx = el.canvas.getContext("2d");
+let uiLang = "en";
+
+const uiCopy = {
+  en: {
+    brand: "SignalForge",
+    tagline: "Local telemetry review",
+    save: "Save",
+    load: "Load",
+    exportReport: "Export report",
+    eyebrow: "Signal review",
+    headline: "Find the weird parts of a metric before they become a mess.",
+    lede: "Generate or import telemetry, build a baseline, flag anomalies, group incidents, and export the review. Everything runs in the browser.",
+    healthScore: "Health score",
+    signalSetup: "Signal setup",
+    scenario: "Scenario",
+    useCsv: "Use CSV signal",
+    startStream: "Start stream",
+    stopStream: "Stop stream",
+    exportCsv: "Export CSV",
+    incidentQueue: "Incident queue",
+    investigationBrief: "Investigation brief",
+    modelSummary: "Model summary",
+    briefEmpty: "Generate or import a signal, then run analysis to create an incident brief.",
+    generate: "Generate",
+    analyze: "Analyze"
+  },
+  es: {
+    brand: "SignalForge",
+    tagline: "Revision local de telemetria",
+    save: "Guardar",
+    load: "Cargar",
+    exportReport: "Exportar reporte",
+    eyebrow: "Revision de senales",
+    headline: "Detecta lo raro en una metrica antes de que se vuelva problema.",
+    lede: "Genera o importa telemetria, crea una linea base, marca anomalias, agrupa incidentes y exporta el analisis. Todo corre en el navegador.",
+    healthScore: "Salud",
+    signalSetup: "Configurar senal",
+    scenario: "Escenario",
+    useCsv: "Usar senal CSV",
+    startStream: "Iniciar stream",
+    stopStream: "Detener stream",
+    exportCsv: "Exportar CSV",
+    incidentQueue: "Cola de incidentes",
+    investigationBrief: "Brief de investigacion",
+    modelSummary: "Resumen del modelo",
+    briefEmpty: "Genera o importa una senal y analiza para crear un brief de incidentes.",
+    generate: "Generar",
+    analyze: "Analizar"
+  }
+};
+
+function applyUiLanguage(nextLang) {
+  uiLang = nextLang;
+  document.documentElement.lang = uiLang;
+  const toggle = document.querySelector(".language-switch");
+  if (toggle) toggle.setAttribute("aria-pressed", String(uiLang === "es"));
+  document.querySelectorAll("[data-i18n]").forEach(node => {
+    const value = uiCopy[uiLang][node.dataset.i18n];
+    if (value) node.textContent = value;
+  });
+  el.generate.textContent = uiCopy[uiLang].generate;
+  el.analyze.textContent = uiCopy[uiLang].analyze;
+  if (!state.streamTimer) el.stream.textContent = uiCopy[uiLang].startStream;
+}
 
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
@@ -681,7 +745,7 @@ function hideTooltip() {
 function startStream() {
   if (!state.analysis) analyzeSeries();
   state.streamIndex = Math.min(16, state.series.length);
-  el.stream.textContent = "Stop Stream";
+  el.stream.textContent = uiCopy[uiLang].stopStream;
   renderChart();
   state.streamTimer = window.setInterval(() => {
     state.streamIndex = Math.min(state.series.length, state.streamIndex + 2);
@@ -696,7 +760,7 @@ function stopStream(render = true) {
     state.streamTimer = null;
   }
   state.streamIndex = null;
-  el.stream.textContent = "Start Stream";
+  el.stream.textContent = uiCopy[uiLang].startStream;
   if (render && state.analysis) renderChart();
 }
 
@@ -816,5 +880,17 @@ function bindEvents() {
 }
 
 bindEvents();
+document.querySelector(".language-switch")?.addEventListener("click", () => {
+  applyUiLanguage(uiLang === "en" ? "es" : "en");
+});
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("is-visible");
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll("[data-reveal]").forEach(node => revealObserver.observe(node));
+applyUiLanguage(uiLang);
 syncOutputs();
 generateSeries();

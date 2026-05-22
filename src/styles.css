@@ -31,6 +31,7 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   margin: 0;
   background:
@@ -42,6 +43,22 @@ body {
   line-height: 1.5;
   letter-spacing: 0;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(47, 143, 131, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(49, 95, 130, 0.07) 1px, transparent 1px);
+  background-size: 62px 62px;
+  animation: telemetry-grid 16s linear infinite;
+}
+
+@keyframes telemetry-grid {
+  to { background-position: 62px 0, 0 62px; }
 }
 
 button,
@@ -76,44 +93,8 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   color: inherit;
   text-decoration: none;
-}
-
-.signal-mark {
-  display: flex;
-  align-items: end;
-  gap: 5px;
-  width: 50px;
-  height: 34px;
-  padding: 0 2px;
-}
-
-.signal-mark i {
-  display: block;
-  width: 7px;
-  border-radius: 999px 999px 0 0;
-  background: var(--surface);
-}
-
-.signal-mark i:nth-child(1) {
-  height: 14px;
-}
-
-.signal-mark i:nth-child(2) {
-  height: 24px;
-  background: var(--blue);
-}
-
-.signal-mark i:nth-child(3) {
-  height: 31px;
-  background: var(--teal);
-}
-
-.signal-mark i:nth-child(4) {
-  height: 19px;
-  background: var(--amber);
 }
 
 .brand strong,
@@ -135,6 +116,45 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.language-switch {
+  display: grid;
+  grid-template-columns: auto 36px auto;
+  gap: 7px;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid rgba(255, 254, 250, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 254, 250, 0.08);
+  color: rgba(255, 254, 250, 0.78);
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.language-switch i {
+  position: relative;
+  height: 19px;
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.language-switch i::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--teal);
+  transition: transform 0.22s ease;
+}
+
+.language-switch[aria-pressed="true"] i::before {
+  transform: translateX(17px);
 }
 
 .shell {
@@ -172,6 +192,24 @@ button {
   background:
     linear-gradient(135deg, rgba(47, 143, 131, 0.12), transparent 42%),
     rgba(255, 254, 250, 0.92);
+  overflow: hidden;
+  position: relative;
+}
+
+.summary-copy::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), transparent 22%, var(--blue), transparent 48%, var(--amber));
+  animation: signal-sweep 4.5s ease-in-out infinite;
+}
+
+@keyframes signal-sweep {
+  0%, 100% { transform: translateX(-35%); opacity: 0.45; }
+  50% { transform: translateX(35%); opacity: 1; }
 }
 
 .eyebrow {
@@ -446,6 +484,17 @@ canvas {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tooltip {
