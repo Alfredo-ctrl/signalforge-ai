@@ -56,25 +56,28 @@ button {
 }
 
 .topbar {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 10;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
-  min-height: 76px;
-  padding: 16px 28px;
-  border-bottom: 1px solid rgba(32, 37, 42, 0.1);
-  background: rgba(245, 242, 236, 0.92);
-  backdrop-filter: blur(14px);
+  width: min(1480px, calc(100% - 40px));
+  margin: 18px auto 0;
+  padding: 14px 16px;
+  border: 1px solid #19212a;
+  background:
+    linear-gradient(90deg, rgba(47, 143, 131, 0.2), transparent 38%),
+    #19212a;
+  color: var(--surface);
+  box-shadow: 0 20px 45px rgba(32, 37, 42, 0.16);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: var(--ink);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -91,7 +94,7 @@ button {
   display: block;
   width: 7px;
   border-radius: 999px 999px 0 0;
-  background: var(--ink);
+  background: var(--surface);
 }
 
 .signal-mark i:nth-child(1) {
@@ -124,7 +127,7 @@ button {
 }
 
 .brand small {
-  color: var(--muted);
+  color: rgba(255, 254, 250, 0.66);
   font-size: 12px;
 }
 
@@ -137,13 +140,14 @@ button {
 .shell {
   width: min(1480px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 34px 0 76px;
+  padding: 18px 0 76px;
 }
 
 .summary-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
   gap: 18px;
+  min-height: 330px;
   margin-bottom: 18px;
 }
 
@@ -162,7 +166,12 @@ button {
 }
 
 .summary-copy {
-  padding: 26px;
+  display: grid;
+  align-content: end;
+  padding: clamp(26px, 5vw, 58px);
+  background:
+    linear-gradient(135deg, rgba(47, 143, 131, 0.12), transparent 42%),
+    rgba(255, 254, 250, 0.92);
 }
 
 .eyebrow {
@@ -597,8 +606,7 @@ canvas {
 
 @media (max-width: 700px) {
   .topbar {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     padding: 16px 20px;
   }
 
