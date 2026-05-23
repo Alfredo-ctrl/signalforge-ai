@@ -34,6 +34,9 @@
         <span data-i18n="healthScore">Health score</span>
         <strong id="hero-score">--</strong>
         <small id="hero-summary">Run an analysis to profile the current signal.</small>
+        <div class="parallax-frame health-parallax" aria-hidden="true">
+          <img src="assets/parallax-signal.svg" alt="" data-parallax data-orientation="right" data-scale="1.16" data-delay="0.6">
+        </div>
       </div>
     </section>
 
@@ -160,6 +163,8 @@
   </main>
 
   <div class="toast" id="toast" hidden></div>
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
+  <script src="src/parallax.js"></script>
   <script src="src/app.js"></script>
 </body>
 </html>

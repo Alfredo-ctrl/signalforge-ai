@@ -259,6 +259,30 @@ button {
   color: var(--muted);
 }
 
+.parallax-frame {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.parallax-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.parallax-frame .simpleParallax {
+  height: 100%;
+}
+
+.health-parallax {
+  min-height: 118px;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  opacity: 0.9;
+}
+
 .workspace {
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
