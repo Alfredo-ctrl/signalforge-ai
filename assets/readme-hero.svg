@@ -1,0 +1,13 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SignalForge AI banner">
+  <rect width="1200" height="360" rx="34" fill="#061a1d"/>
+  <path d="M0 310 C180 220 310 395 510 286 C706 180 872 336 1200 170" stroke="#f5d547" stroke-width="2" opacity=".28"/>
+  <path d="M0 58 H1200 M120 0 V360 M280 0 V360 M440 0 V360 M600 0 V360 M760 0 V360 M920 0 V360 M1080 0 V360" stroke="#36f1cd" opacity=".08"/>
+  
+    <text x="70" y="128" fill="#36f1cd" font-size="22" font-weight="800" letter-spacing="4">SIGNALFORGE-AI</text>
+    <text x="70" y="192" fill="#36f1cd" font-size="58" font-weight="900">SignalForge AI</text>
+    <foreignObject x="70" y="218" width="610" height="88">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color:#36f1cd;font:700 24px Segoe UI, Arial, sans-serif;line-height:1.25">Offline telemetry intelligence for anomaly detection and incident review.</div>
+    </foreignObject>
+  <path d="M725 190 H780 L805 105 L850 270 L890 145 L930 190 H1080" fill="none" stroke="#f5d547" stroke-width="10"/><rect x="720" y="80" width="370" height="205" rx="14" fill="none" stroke="#36f1cd" opacity=".35"/><circle cx="805" cy="105" r="9" fill="#f7f7ff"/><circle cx="850" cy="270" r="9" fill="#f7f7ff"/>
+  <text x="70" y="315" fill="#36f1cd" font-size="18" font-weight="800" opacity=".72">Portfolio README identity 04</text>
+</svg>

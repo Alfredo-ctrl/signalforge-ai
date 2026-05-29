@@ -1,3 +1,39 @@
+<!-- portfolio:start -->
+<p align="center">
+  <img src="assets/readme-hero.svg" alt="SignalForge AI banner" width="100%" />
+</p>
+
+<h1 align="center">SignalForge AI</h1>
+
+<p align="center"><strong>Offline telemetry intelligence for anomaly detection and incident review.</strong></p>
+
+<p align="center">
+<img alt="focus: anomaly detection" src="https://img.shields.io/badge/focus-anomaly%20detection-f5d547?style=for-the-badge&labelColor=36f1cd" />
+  <img alt="mode: offline" src="https://img.shields.io/badge/mode-offline-f5d547?style=for-the-badge&labelColor=36f1cd" />
+  <img alt="surface: dashboard" src="https://img.shields.io/badge/surface-dashboard-f5d547?style=for-the-badge&labelColor=36f1cd" />
+</p>
+
+## Signal Room
+
+A monitoring interface with the feel of a local incident desk: readings, spikes, and review signals.
+
+## Useful For
+
+Explaining telemetry problems, reviewing anomalies, and showing how AI-style logic can support operational decisions.
+
+## Run Locally
+
+`npm install` then `npm run dev`, or open the static page when no build step is needed.
+
+## Portfolio Note
+
+This repository has its own visual identity inside the portfolio. The goal is that every project feels like a different product, not another copy of the same template.
+<!-- portfolio:end -->
+
+---
+
+## Existing Project Notes
+
 # SignalForge
 
 SignalForge is an offline anomaly detection lab for technical telemetry. It generates realistic time-series data, analyzes it with robust statistical models, groups anomalies into incidents, explains likely root causes, and exports investigation reports without requiring a backend or cloud service.
